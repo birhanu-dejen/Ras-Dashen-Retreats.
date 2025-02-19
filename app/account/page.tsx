@@ -1,3 +1,6 @@
+export const metadata = {
+  title: " your account",
+};
 export default function Account() {
   return (
     <div>

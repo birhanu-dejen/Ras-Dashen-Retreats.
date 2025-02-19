@@ -1,4 +1,7 @@
-import Counter from "../components/counter";
+import Counter from "../_components/counter";
+export const metadata = {
+  title: "cabins",
+};
 export default async function Cabins() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
