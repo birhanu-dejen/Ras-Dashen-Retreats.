@@ -1,5 +1,5 @@
-import Navigation from "./navigation";
-import Logo from "./logo";
+import Navigation from "./Navigation";
+import Logo from "./Logo";
 function Header() {
   return (
     <header className="border-b border-primary-900 px-8 py-5">
