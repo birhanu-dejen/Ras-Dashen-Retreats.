@@ -4,14 +4,14 @@ export default function Navigation() {
     <nav className="text-xl z-10 text-white">
       <ul className="flex items-center gap-16">
         <li>
-          <Link href="/cabins">cabins</Link>
+          <Link href="/cabins">Cabins</Link>
+        </li>
+        <li>
+          <Link href="/about">About</Link>
         </li>
         <li>
           {" "}
-          <Link href="/account"> your account</Link>
-        </li>
-        <li>
-          <Link href="/about">about</Link>
+          <Link href="/account"> Guest Area</Link>
         </li>
       </ul>
     </nav>

@@ -1,26 +1,28 @@
 import Counter from "@/app/_components/Counter";
 import CabinCard from "@/app/_components/CabinCard";
+import { getCabins } from "../_lib/data-service";
 
 export const metadata = {
-  title: "Cabins",
+  title: "Ras Dashen Retreats",
 };
 
-export default function Page() {
-  // CHANGE
-  const cabins = [];
+export default async function Page() {
+  const cabins = await getCabins();
 
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
-        Our Luxury Cabins
+        Ras Dashen Retreats
       </h1>
       <p className="text-primary-200 text-lg mb-10">
-        Cozy yet luxurious cabins, located right in the heart of the Italian
-        Dolomites. Imagine waking up to beautiful mountain views, spending your
-        days exploring the dark forests around, or just relaxing in your private
-        hot tub under the stars. Enjoy nature&apos;s beauty in your own little
-        home away from home. The perfect spot for a peaceful, calm vacation.
-        Welcome to paradise.
+        Experience the breathtaking beauty of Semain Mountain National Park at
+        Ras Dashen Retreats. Nestled in the heart of Ethiopia&apos;s majestic
+        highlands, our cabins offer a perfect blend of adventure and
+        tranquility. Wake up to awe-inspiring views of Africa’s fourth highest
+        peak, explore ancient trails, and immerse yourself in the rich
+        biodiversity of the region. After a day of hiking and wildlife
+        encounters, unwind in the comfort of your private retreat, under a
+        starlit sky.
       </p>
 
       {cabins.length > 0 && (

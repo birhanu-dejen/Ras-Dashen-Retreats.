@@ -6,16 +6,16 @@ export default function Home() {
     <main>
       <Image
         src={background}
-        alt="background"
+        alt="limalimo luxury cabin"
         fill
         placeholder="blur"
         quality={70}
         className="brightness-75"
       />
       <div className="relative z-10 text-center">
-        <h1 className="text-5xl text-primary-50 mb-16 tracking-tight font-normal">
+        <h1 className="text-7xl text-primary-50 mb-14 tracking-tight font-normal">
           {" "}
-          simien mountains national park, ethiopia
+          Your gateway to adventure.
         </h1>
         <Link
           href="/cabins"
