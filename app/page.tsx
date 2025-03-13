@@ -13,9 +13,9 @@ export default function Home() {
         className="brightness-75"
       />
       <div className="relative z-10 text-center">
-        <h1 className="text-7xl text-primary-50 mb-14 tracking-tight font-normal">
+        <h1 className="text-6xl text-primary-50 mb-14 tracking-tight font-normal">
           {" "}
-          Your gateway to adventure.
+          Welcome to Your Gateway to Adventure!
         </h1>
         <Link
           href="/cabins"
