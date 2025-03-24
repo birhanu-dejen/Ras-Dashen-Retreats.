@@ -1,39 +1,54 @@
-// app/_lib/auth.ts
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import { getGuest, createGuest } from "./data-service";
+import GoogleProvider from "next-auth/providers/google";
+import { createGuest, getGuest } from "./data-service";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+const authConfig = {
   providers: [
-    Google({
+    GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    authorized({ auth, request }) {
-      return !!auth?.user;
+    async signIn({ user }) {
+      if (!user?.email) return false; // Ensure email exists
+
+      try {
+        const existingGuest = await getGuest(user.email);
+
+        if (!existingGuest) {
+          await createGuest({ email: user.email, fullName: user.name });
+        }
+
+        return true;
+      } catch (error) {
+        console.error("Sign-in error:", error);
+        return false;
+      }
     },
-  },
-  async signIn({ user, account, profile }) {
-    try {
-      const existingGuest = await getGuest(user.email);
-      if (!existingGuest)
-        await createGuest({ email: user.email, fullName: user.name });
-      return false;
-    } catch (error) {
-      console.log(error);
-      return true;
-    }
-  },
-  async session({ session, user }) {
-    const guest = await getGuest(session.user.email);
-    session.user.guestId = guest.id;
-    return session;
+    async session({ session }) {
+      if (!session?.user?.email) return session;
+
+      try {
+        const guest = await getGuest(session.user.email);
+        if (guest) {
+          session.user.guestId = guest.id;
+        }
+      } catch (error) {
+        console.error("Session error:", error);
+      }
+
+      return session;
+    },
   },
   pages: {
     signIn: "/login",
-    signOut: "/signout",
   },
-});
+};
+
+export const {
+  auth,
+  signIn,
+  signOut,
+  handlers: { GET, POST },
+} = NextAuth(authConfig);
