@@ -3,7 +3,7 @@ import ReservationProvider from "./_components/ReservationContext";
 import "./_styles/globals.css";
 export const metadata = {
   title: {
-    template: "%s /Ras Dashen Retreats ",
+    template: "%s / Ras Dashen Retreats ",
     default: "welcome/ Ras Dashen Retreats ",
   },
   description:
