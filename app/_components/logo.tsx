@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../icon.png";
+import logo from "../../public/logo.png";
 export default function Logo() {
   return (
     <Link className="flex items-center gap-4 z-10 " href="/">
