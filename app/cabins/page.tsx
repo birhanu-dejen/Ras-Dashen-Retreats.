@@ -16,14 +16,11 @@ export default async function Page({ searchParams }) {
         Ras Dashen Retreats
       </h1>
       <p className="text-primary-200 text-lg mb-10">
-        Experience the breathtaking beauty of Semain Mountain National Park at
-        Ras Dashen Retreats. Nestled in the heart of Ethiopia&apos;s majestic
-        highlands, our cabins offer a perfect blend of adventure and
-        tranquility. Wake up to awe-inspiring views of Africa’s fourth highest
-        peak, explore ancient trails, and immerse yourself in the rich
-        biodiversity of the region. After a day of hiking and wildlife
-        encounters, unwind in the comfort of your private retreat, under a
-        starlit sky.
+        Discover Your Perfect Mountain Escape 🌄 Nestled in the heart of
+        Ethiopia’s Simien Mountains, Ras Dashen Retreats offers an unforgettable
+        blend of rugged adventure and serene comfort. Whether you seek sunrise
+        treks to soaring peaks or evenings by the fire under a sky full of
+        stars, your dream getaway starts here. Choose your retreat:
       </p>
       <div className="flex justify-end mb-8">
         <Filter />

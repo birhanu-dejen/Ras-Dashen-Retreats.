@@ -1,6 +1,8 @@
 import Header from "./_components/Header";
 import ReservationProvider from "./_components/ReservationContext";
 import "./_styles/globals.css";
+
+import FooterWrapper from "./_components/FooterWrapper";
 export const metadata = {
   title: {
     template: "%s / Ras Dashen Retreats ",
@@ -9,6 +11,7 @@ export const metadata = {
   description:
     "Stay at Ras Dashen Retreats, your cozy mountain cabins in Simien Mountains National Park. Enjoy breathtaking views, luxury amenities, and unforgettable adventures. Book your escape to Ethiopia's natural wonder today!",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,50 +26,7 @@ export default function RootLayout({
             <ReservationProvider>{children}</ReservationProvider>
           </main>
         </div>
-        <footer className="bg-primary-900 text-primary-100 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-              {/* Copyright Section */}
-              <p className="text-lg text-center md:text-left">
-                &copy; {new Date().getFullYear()} Ras Dashen Retreats. All
-                rights reserved.
-              </p>
-
-              {/* Navigation Links */}
-              <nav aria-label="Footer Navigation">
-                <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-lg hover:text-primary-200 transition-colors duration-200"
-                      aria-label="Contact Us"
-                    >
-                      Contact Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-lg hover:text-primary-200 transition-colors duration-200"
-                      aria-label="Terms & Conditions"
-                    >
-                      Terms & Conditions
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-lg hover:text-primary-200 transition-colors duration-200"
-                      aria-label="Privacy Policy"
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </footer>
+        <FooterWrapper />
       </body>
     </html>
   );

@@ -20,7 +20,7 @@ export default function Home() {
             Welcome to your
           </span>
           Luxury Mountain Cabin
-          <span className="block text-xl md:text-2xl font-normal mt-4 text-primary-100">
+          <span className="block text-xl md:text-2xl font-bold mt-4 text-primary-100">
             Nestled in Simien Mountains National Park
           </span>
         </h1>
