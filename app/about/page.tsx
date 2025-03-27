@@ -1,5 +1,5 @@
 import Image from "next/image";
-import image1 from "@/public/about-1.webp";
+import image1 from "@/public/about-1.jpg";
 import image2 from "@/public/about-2.jpg";
 import image3 from "@/public/about-3.jpg";
 import Link from "next/link";

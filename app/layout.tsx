@@ -1,4 +1,4 @@
-import Header from "./_components/Header";
+import Header from "./_components/header";
 import ReservationProvider from "./_components/ReservationContext";
 import "./_styles/globals.css";
 
