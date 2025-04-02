@@ -1,5 +1,6 @@
 import Link from "next/link";
-export function SocialsInfo({ Icon, link }) {
+
+export function SocialsInfo({ Icon, link }: any) {
   return (
     <Link
       href={link}
@@ -9,7 +10,7 @@ export function SocialsInfo({ Icon, link }) {
     </Link>
   );
 }
-export function MoreInfo({ name, link }) {
+export function MoreInfo({ name, link }: any) {
   return (
     <Link
       href={link}
@@ -19,7 +20,7 @@ export function MoreInfo({ name, link }) {
     </Link>
   );
 }
-export function ContactInfo({ name, Icon }) {
+export function ContactInfo({ name, Icon }: any) {
   return (
     <div className="flex items-center space-x-3">
       <Icon className="h-5 w-5 text-accent-500 flex-shrink-0" />
@@ -27,7 +28,7 @@ export function ContactInfo({ name, Icon }) {
     </div>
   );
 }
-export function TermsInfo({ name, link }) {
+export function TermsInfo({ name, link }: any) {
   return (
     <Link
       href={link}

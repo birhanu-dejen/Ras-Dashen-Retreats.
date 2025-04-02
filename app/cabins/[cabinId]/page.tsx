@@ -1,11 +1,11 @@
-import Cabin from "@/app/_components/Cabin";
-import Reservation from "@/app/_components/Reservation";
-import Spinner from "@/app/_components/Spinner";
-import { getCabin, getCabins } from "@/app/_lib/data-service";
+import Cabin from "../../_components/Cabin";
+import Reservation from "../../_components/Reservation";
+import Spinner from "../../_components/Spinner";
+import { getCabin, getCabins } from "../../_lib/data-service";
 
 import { Suspense } from "react";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: any) {
   const { cabinId } = await params;
   const { name } = await getCabin(cabinId);
   return { title: `Cabin ${name}` };
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: any) {
   const { cabinId } = await params;
   const cabin = await getCabin(cabinId);
 

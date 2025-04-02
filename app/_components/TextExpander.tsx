@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 
-function TextExpander({ children }) {
+function TextExpander({ children }: { children: React.ReactNode }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const getText = (node) => {
+  const getText = (node: any): string => {
     if (typeof node === "string") return node.trim();
+    if (typeof node === "number") return String(node);
     if (Array.isArray(node)) return node.map(getText).join(" ").trim();
-    if (node?.props?.children) return getText(node.props.children);
-    return "";
+    return node?.props?.children ? getText(node.props.children) : "";
   };
 
   const text = getText(children);

@@ -7,7 +7,7 @@ export default function Filter() {
   const pathname = usePathname();
   const activeFilter = searchParams.get("capacity") ?? "all";
 
-  function handleFilter(filter) {
+  function handleFilter(filter: any) {
     const params = new URLSearchParams(searchParams);
     params.set("capacity", filter);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
@@ -47,7 +47,7 @@ export default function Filter() {
   );
 }
 
-function Button({ handleFilter, filter, activeFilter, children }) {
+function Button({ handleFilter, filter, activeFilter, children }: any) {
   return (
     <button
       className={`px-5 py-2 hover:bg-primary-700 ${

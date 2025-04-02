@@ -1,8 +1,21 @@
 "use client";
 
-import { updateGuest } from "@/app/_lib/actions";
+import { updateGuest } from "../_lib/actions";
 import { useFormStatus } from "react-dom";
-export default function UpdateProfileForm({ children, guest }) {
+interface UpdateProfileFormProps {
+  children: React.ReactNode;
+  guest: {
+    nationality: string;
+    fullName: string;
+    nationalID: string;
+    email: string;
+    countryFlag: string;
+  };
+}
+export default function UpdateProfileForm({
+  children,
+  guest,
+}: UpdateProfileFormProps) {
   const { nationality, fullName, nationalID, email, countryFlag } = guest;
 
   return (

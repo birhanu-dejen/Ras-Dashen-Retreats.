@@ -1,5 +1,5 @@
 import Header from "./_components/header";
-import ReservationProvider from "./_components/ReservationContext";
+import { ReservationProvider } from "./_components/ReservationContext";
 import "./_styles/globals.css";
 
 import FooterWrapper from "./_components/FooterWrapper";

@@ -6,7 +6,7 @@ export const metadata = {
   title: "Ras Dashen Retreats",
 };
 export const revalidate = 3600;
-export default async function Page({ searchParams }) {
+export default async function Page({ searchParams }: any) {
   const resolvedSearchParams = await searchParams;
   const filter = resolvedSearchParams?.capacity ?? "all";
 
