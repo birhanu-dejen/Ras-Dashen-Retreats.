@@ -1,13 +1,12 @@
 "use server";
 
 import { auth, signIn, signOut } from "../../auth";
-
 import { getBookings } from "./data-service";
 import { supabase } from "./supabase";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function updateGuest(formData) {
+export async function updateGuest(formData: FormData) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -29,7 +28,7 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
-export async function createBooking(bookingData, formData) {
+export async function createBooking(bookingData, formData: FormData) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -37,7 +36,7 @@ export async function createBooking(bookingData, formData) {
     ...bookingData,
     guestId: session.user.guestId,
     numGuests: Number(formData.get("numGuests")),
-    observations: formData.get("observations").slice(0, 1000),
+    observations: formData.get("observations")?.slice(0, 1000),
     extrasPrice: 0,
     totalPrice: bookingData.cabinPrice,
     isPaid: false,
@@ -54,7 +53,7 @@ export async function createBooking(bookingData, formData) {
   redirect("/cabins/thankyou");
 }
 
-export async function deleteBooking(bookingId) {
+export async function deleteBooking(bookingId: string) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -75,29 +74,13 @@ export async function deleteBooking(bookingId) {
 }
 
 export async function updateBooking(formData: FormData) {
-  const id = formData.get("bookingId"); 
-  const numGuests = formData.get("numGuests");
+  const bookingId = formData.get("bookingId") as string;
+  const numGuests = Number(formData.get("numGuests"));
   const observations = formData.get("observations");
 
-  const updatedFields = {
-    numGuests: Number(numGuests),
-    observations,
-  };
+  if (!bookingId) throw new Error("Booking ID is required");
 
-  const { data, error } = await supabase
-    .from("bookings")
-    .update(updatedFields)
-    .eq("id", id)
-    .select()
-    .single();
-
-  if (error) {
-    console.error(error);
-    throw new Error("Booking could not be updated");
-  }
-
-  return data;
-}
+  const updateData = { numGuests, observations };
 
   const { error } = await supabase
     .from("bookings")
