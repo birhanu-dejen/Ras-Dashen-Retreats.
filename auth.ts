@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import { createGuest, getGuest } from "./data-service";
-
+import { createGuest, getGuest } from "./app/_lib/data-service";
 const authConfig = {
   providers: [
     Google({
@@ -36,9 +35,4 @@ const authConfig = {
   },
 };
 
-export const {
-  auth,
-  signIn,
-  signOut,
-  handlers: { GET, POST },
-} = NextAuth(authConfig);
+export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);

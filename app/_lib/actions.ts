@@ -1,7 +1,6 @@
 "use server";
 
-import { auth, signIn, signOut } from "./Auth";
-
+import { auth, signIn, signOut } from "../../auth";
 import { getBookings } from "./data-service";
 import { supabase } from "./supabase";
 import { revalidatePath } from "next/cache";
@@ -29,7 +28,7 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
-export async function createBooking(bookingData, formData) {
+export async function createBooking(bookingData, formData: FormData) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -37,7 +36,7 @@ export async function createBooking(bookingData, formData) {
     ...bookingData,
     guestId: session.user.guestId,
     numGuests: Number(formData.get("numGuests")),
-    observations: formData.get("observations").slice(0, 1000),
+    observations: formData.get("observations")?.slice(0, 1000),
     extrasPrice: 0,
     totalPrice: bookingData.cabinPrice,
     isPaid: false,
@@ -54,7 +53,7 @@ export async function createBooking(bookingData, formData) {
   redirect("/cabins/thankyou");
 }
 
-export async function deleteBooking(bookingId) {
+export async function deleteBooking(bookingId: string) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
@@ -85,8 +84,7 @@ export async function updateBooking(formData) {
   const guestBookings = await getBookings(session.user.guestId);
   const guestBookingIds = guestBookings.map((booking) => booking.id);
 
-  if (!guestBookingIds.includes(bookingId))
-    throw new Error("You are not allowed to update this booking");
+  if (!bookingId) throw new Error("Booking ID is required");
 
   // 3) Building update data
   const updateData = {

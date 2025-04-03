@@ -1,4 +1,4 @@
-import { auth } from "./app/_lib/Auth";
+import { auth } from "./auth";
 
 export const middleware = auth;
 export const config = {

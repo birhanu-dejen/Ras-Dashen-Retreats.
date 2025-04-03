@@ -1,6 +1,6 @@
 import SelectCountry from "../../_components/SelectCountry";
 import UpdateProfileForm from "../../_components/UpdateProfileForm";
-import { auth } from "../../_lib/Auth";
+import { auth } from "../../../auth";
 import { getGuest } from "../../_lib/data-service";
 export const metadata = {
   title: "Update profile",
