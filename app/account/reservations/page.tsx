@@ -1,5 +1,5 @@
 import ReservationList from "../../_components/ReservationList";
-import { auth } from "../../_lib/Auth";
+import { auth } from "../../../auth";
 import { getBookings } from "../../_lib/data-service";
 import Link from "next/link";
 

@@ -1,5 +1,5 @@
 import SubmitButton from "../../../../_components/SubmitButton";
-import { updateBooking } from "../../../../_lib/data-service";
+import { updateBooking } from "../../../../_lib/actions";
 import { getBooking, getCabin } from "../../../../_lib/data-service";
 
 export default async function Page({ params }) {
