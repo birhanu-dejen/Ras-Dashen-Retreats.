@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, signIn, signOut } from "./Auth";
+import { auth, signIn, signOut } from "../../auth";
 
 import { getBookings } from "./data-service";
 import { supabase } from "./supabase";
