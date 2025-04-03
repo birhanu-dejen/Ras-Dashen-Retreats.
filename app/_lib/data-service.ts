@@ -192,7 +192,16 @@ export async function createBooking(newBooking) {
   return data;
 }
 
-export async function updateBooking(id, updatedFields) {
+export async function updateBooking(formData: FormData) {
+  const id = formData.get("bookingId"); // Extract bookingId from form data
+  const numGuests = formData.get("numGuests");
+  const observations = formData.get("observations");
+
+  const updatedFields = {
+    numGuests: Number(numGuests), // Convert to number if needed
+    observations,
+  };
+
   const { data, error } = await supabase
     .from("bookings")
     .update(updatedFields)
@@ -204,9 +213,9 @@ export async function updateBooking(id, updatedFields) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
+
   return data;
 }
-
 export async function deleteBooking(id) {
   const { data, error } = await supabase.from("bookings").delete().eq("id", id);
 
